@@ -32,8 +32,8 @@ namespace Aurora.Domain.ValueTypes
             if (_value.Length < 5)
                 return AddNotification("The name must have more than 05 chars.");
 
-            if (!Regex.IsMatch(_value, (@"[^a-zA-Z0-9]")))
-                return AddNotification("The name must not have any special char.");
+            if (Regex.IsMatch(_value, (@"[^a-zA-Z]")))
+                return AddNotification("The name must not contain any special characters or numbers.");
 
             return true;
         }
