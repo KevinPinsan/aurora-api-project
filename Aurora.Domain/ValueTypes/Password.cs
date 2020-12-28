@@ -35,8 +35,11 @@ namespace Aurora.Domain.ValueTypes
             if(_value.Length < 6)
                 return AddNotification("The password must have more than 6 chars.");
 
-            if (!Regex.IsMatch(_value, (@"[^a-zA-Z0-9]")))
-                return AddNotification("The password must have any special char.");
+            if (!Regex.IsMatch(_value, (@"[0-9]{1}")))
+                return AddNotification("your password must contain a number.");
+
+            if (!Regex.IsMatch(_value, (@"[^a-zA-Z0-9]{1}")))
+                return AddNotification("your password must contain a special character.");
 
             return true;
         }
